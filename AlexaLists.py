@@ -10,10 +10,6 @@ from flask import Flask, request, jsonify
 from functools import wraps
 from html.parser import HTMLParser
 import timeit
-from datetime import datetime
-from copy import deepcopy
-
-
 
 ########################################
 class AlexaAPI():
@@ -324,7 +320,11 @@ class Ngrok():
             self.up = False
 
 if __name__ == "__main__":
-    obj = Ngrok()
+    obj = AlexaAPI()
+    raw = obj.getListMetadata()
+    for l in raw["lists"]:
+        items = obj.getList(l["listId"])
+        print()
     print()
     # obj.download()
 

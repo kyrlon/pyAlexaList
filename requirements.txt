@@ -1,0 +1,5 @@
+requests
+selenium==4.7.2
+gkeepapi
+flask
+keyring

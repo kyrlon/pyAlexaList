@@ -1,0 +1,171 @@
+{
+    "items": [
+        {
+            "createdTime": "Sun Jan 07 00:40:23 UTC 2024",
+            "href": "/v2/householdlists/YW16bjEuYWNjb3VudC5FRk5WXihEWkk6Rk5aO1NOSlRSRz1VSFBKXl9ZLVNIT1BQSU5HX0lURU0=/items/d789355a-a291-4be5-9a2e-ca93f7e16c7b",
+            "id": "d789355a-a291-4be5-9a2e-ca93f7e16c7b",
+            "status": "active",
+            "updatedTime": "Sun Jan 07 00:40:23 UTC 2024",
+            "value": "eggs",
+            "version": 1
+        },
+        {
+            "createdTime": "Sat Jan 06 23:51:36 UTC 2024",
+            "href": "/v2/householdlists/YW16bjEuYWNjb3VudC5FRk5WXihEWkk6Rk5aO1NOSlRSRz1VSFBKXl9ZLVNIT1BQSU5HX0lURU0=/items/345ba075-a5a4-49ec-8e69-532c97184d9d",
+            "id": "345ba075-a5a4-49ec-8e69-532c97184d9d",
+            "status": "active",
+            "updatedTime": "Sat Jan 06 23:51:36 UTC 2024",
+            "value": "hash browns",
+            "version": 1
+        },
+        {
+            "createdTime": "Sat Jan 06 19:27:16 UTC 2024",
+            "href": "/v2/householdlists/YW16bjEuYWNjb3VudC5FRk5WXihEWkk6Rk5aO1NOSlRSRz1VSFBKXl9ZLVNIT1BQSU5HX0lURU0=/items/fd4bfa71-786e-4ab5-8aae-d64beeb74b3c",
+            "id": "fd4bfa71-786e-4ab5-8aae-d64beeb74b3c",
+            "status": "active",
+            "updatedTime": "Sat Jan 06 19:27:16 UTC 2024",
+            "value": "water bottles",
+            "version": 1
+        },
+        {
+            "createdTime": "Thu Jan 04 05:15:07 UTC 2024",
+            "href": "/v2/householdlists/YW16bjEuYWNjb3VudC5FRk5WXihEWkk6Rk5aO1NOSlRSRz1VSFBKXl9ZLVNIT1BQSU5HX0lURU0=/items/ed0af7f9-5026-4c65-b0cb-a64491deb181",
+            "id": "ed0af7f9-5026-4c65-b0cb-a64491deb181",
+            "status": "active",
+            "updatedTime": "Thu Jan 04 05:15:07 UTC 2024",
+            "value": "turkey bacon",
+            "version": 1
+        },
+        {
+            "createdTime": "Wed Jan 03 13:41:44 UTC 2024",
+            "href": "/v2/householdlists/YW16bjEuYWNjb3VudC5FRk5WXihEWkk6Rk5aO1NOSlRSRz1VSFBKXl9ZLVNIT1BQSU5HX0lURU0=/items/c0959a8b-3e15-4821-968b-e2567d3dd765",
+            "id": "c0959a8b-3e15-4821-968b-e2567d3dd765",
+            "status": "active",
+            "updatedTime": "Wed Jan 03 13:41:44 UTC 2024",
+            "value": "soap",
+            "version": 1
+        },
+        {
+            "createdTime": "Sun Dec 31 20:30:41 UTC 2023",
+            "href": "/v2/householdlists/YW16bjEuYWNjb3VudC5FRk5WXihEWkk6Rk5aO1NOSlRSRz1VSFBKXl9ZLVNIT1BQSU5HX0lURU0=/items/67348fbb-4cbf-488f-8dcb-a0bce2fb9230",
+            "id": "67348fbb-4cbf-488f-8dcb-a0bce2fb9230",
+            "status": "active",
+            "updatedTime": "Sun Dec 31 20:30:41 UTC 2023",
+            "value": "bacon",
+            "version": 1
+        },
+        {
+            "createdTime": "Fri Dec 29 18:56:24 UTC 2023",
+            "href": "/v2/householdlists/YW16bjEuYWNjb3VudC5FRk5WXihEWkk6Rk5aO1NOSlRSRz1VSFBKXl9ZLVNIT1BQSU5HX0lURU0=/items/a1f48bf2-1067-4909-84c7-2ec34391294e",
+            "id": "a1f48bf2-1067-4909-84c7-2ec34391294e",
+            "status": "active",
+            "updatedTime": "Fri Dec 29 18:56:24 UTC 2023",
+            "value": "water filter",
+            "version": 1
+        },
+        {
+            "createdTime": "Fri Dec 29 18:00:33 UTC 2023",
+            "href": "/v2/householdlists/YW16bjEuYWNjb3VudC5FRk5WXihEWkk6Rk5aO1NOSlRSRz1VSFBKXl9ZLVNIT1BQSU5HX0lURU0=/items/dd5df439-0ff9-4d40-b55f-348906068c92",
+            "id": "dd5df439-0ff9-4d40-b55f-348906068c92",
+            "status": "active",
+            "updatedTime": "Fri Dec 29 18:00:33 UTC 2023",
+            "value": "doggy bags",
+            "version": 1
+        },
+        {
+            "createdTime": "Thu Dec 28 14:47:06 UTC 2023",
+            "href": "/v2/householdlists/YW16bjEuYWNjb3VudC5FRk5WXihEWkk6Rk5aO1NOSlRSRz1VSFBKXl9ZLVNIT1BQSU5HX0lURU0=/items/1a091129-0545-49de-b606-7c9ac6494003",
+            "id": "1a091129-0545-49de-b606-7c9ac6494003",
+            "status": "active",
+            "updatedTime": "Thu Dec 28 14:47:06 UTC 2023",
+            "value": "vinegar",
+            "version": 1
+        },
+        {
+            "createdTime": "Thu Dec 28 14:45:01 UTC 2023",
+            "href": "/v2/householdlists/YW16bjEuYWNjb3VudC5FRk5WXihEWkk6Rk5aO1NOSlRSRz1VSFBKXl9ZLVNIT1BQSU5HX0lURU0=/items/123abb88-e740-4b63-af73-34da03f478f0",
+            "id": "123abb88-e740-4b63-af73-34da03f478f0",
+            "status": "active",
+            "updatedTime": "Thu Dec 28 14:45:01 UTC 2023",
+            "value": "milk",
+            "version": 1
+        },
+        {
+            "createdTime": "Mon Dec 25 16:34:23 UTC 2023",
+            "href": "/v2/householdlists/YW16bjEuYWNjb3VudC5FRk5WXihEWkk6Rk5aO1NOSlRSRz1VSFBKXl9ZLVNIT1BQSU5HX0lURU0=/items/08ed77e7-dc47-4d49-9b3d-3f749eecb470",
+            "id": "08ed77e7-dc47-4d49-9b3d-3f749eecb470",
+            "status": "active",
+            "updatedTime": "Mon Dec 25 16:34:23 UTC 2023",
+            "value": "alcohol wipes",
+            "version": 1
+        },
+        {
+            "createdTime": "Sat Dec 23 23:11:27 UTC 2023",
+            "href": "/v2/householdlists/YW16bjEuYWNjb3VudC5FRk5WXihEWkk6Rk5aO1NOSlRSRz1VSFBKXl9ZLVNIT1BQSU5HX0lURU0=/items/78860cef-5b3d-420d-8e35-39d187342e11",
+            "id": "78860cef-5b3d-420d-8e35-39d187342e11",
+            "status": "active",
+            "updatedTime": "Sat Dec 23 23:11:27 UTC 2023",
+            "value": "pedialyte",
+            "version": 1
+        },
+        {
+            "createdTime": "Mon Dec 18 13:26:07 UTC 2023",
+            "href": "/v2/householdlists/YW16bjEuYWNjb3VudC5FRk5WXihEWkk6Rk5aO1NOSlRSRz1VSFBKXl9ZLVNIT1BQSU5HX0lURU0=/items/534c266f-2a12-489a-a916-9336043abb74",
+            "id": "534c266f-2a12-489a-a916-9336043abb74",
+            "status": "active",
+            "updatedTime": "Mon Dec 18 13:26:07 UTC 2023",
+            "value": "syrup coffee",
+            "version": 1
+        },
+        {
+            "createdTime": "Sun Dec 03 18:07:24 UTC 2023",
+            "href": "/v2/householdlists/YW16bjEuYWNjb3VudC5FRk5WXihEWkk6Rk5aO1NOSlRSRz1VSFBKXl9ZLVNIT1BQSU5HX0lURU0=/items/2b68cbde-ce6f-4fcf-9e75-7e14e4b6467f",
+            "id": "2b68cbde-ce6f-4fcf-9e75-7e14e4b6467f",
+            "status": "active",
+            "updatedTime": "Sun Dec 03 18:07:24 UTC 2023",
+            "value": "microban",
+            "version": 1
+        },
+        {
+            "createdTime": "Tue Nov 28 17:04:00 UTC 2023",
+            "href": "/v2/householdlists/YW16bjEuYWNjb3VudC5FRk5WXihEWkk6Rk5aO1NOSlRSRz1VSFBKXl9ZLVNIT1BQSU5HX0lURU0=/items/98edfe33-47d8-40a7-b652-330bf70ca2ed",
+            "id": "98edfe33-47d8-40a7-b652-330bf70ca2ed",
+            "status": "active",
+            "updatedTime": "Tue Nov 28 17:04:00 UTC 2023",
+            "value": "oxiclean powder",
+            "version": 1
+        },
+        {
+            "createdTime": "Mon Nov 27 16:12:41 UTC 2023",
+            "href": "/v2/householdlists/YW16bjEuYWNjb3VudC5FRk5WXihEWkk6Rk5aO1NOSlRSRz1VSFBKXl9ZLVNIT1BQSU5HX0lURU0=/items/921892f2-8732-4ca8-81dd-4852f336f32c",
+            "id": "921892f2-8732-4ca8-81dd-4852f336f32c",
+            "status": "active",
+            "updatedTime": "Mon Nov 27 16:12:41 UTC 2023",
+            "value": "cinnamon",
+            "version": 1
+        },
+        {
+            "createdTime": "Sun Nov 19 23:27:10 UTC 2023",
+            "href": "/v2/householdlists/YW16bjEuYWNjb3VudC5FRk5WXihEWkk6Rk5aO1NOSlRSRz1VSFBKXl9ZLVNIT1BQSU5HX0lURU0=/items/3051c41a-1551-4b1b-b762-289bdd1b273e",
+            "id": "3051c41a-1551-4b1b-b762-289bdd1b273e",
+            "status": "active",
+            "updatedTime": "Sun Nov 19 23:27:10 UTC 2023",
+            "value": "dish detergent",
+            "version": 1
+        },
+        {
+            "createdTime": "Sat Nov 04 18:36:23 UTC 2023",
+            "href": "/v2/householdlists/YW16bjEuYWNjb3VudC5FRk5WXihEWkk6Rk5aO1NOSlRSRz1VSFBKXl9ZLVNIT1BQSU5HX0lURU0=/items/5ca8a4f1-5dec-4ed6-a2ae-bd81f0975db9",
+            "id": "5ca8a4f1-5dec-4ed6-a2ae-bd81f0975db9",
+            "status": "active",
+            "updatedTime": "Sat Nov 04 18:36:23 UTC 2023",
+            "value": "dish soap",
+            "version": 1
+        }
+    ],
+    "links": null,
+    "listId": "YW16bjEuYWNjb3VudC5FRk5WXihEWkk6Rk5aO1NOSlRSRz1VSFBKXl9ZLVNIT1BQSU5HX0lURU0=",
+    "name": "Alexa shopping list",
+    "state": "active",
+    "version": 1
+}

@@ -1,4 +1,11 @@
 # pyAlexaList
+
+Work in progress... :P
+
+Inspired by [gkeepapi](https://github.com/kiwiz/gkeepapi)
+
+
+<br></br>
 https://www.reddit.com/r/amazonecho/comments/cn6yu3/is_it_possible_to_edit_alexa_lists_on_a_computer/
 
 default lists
@@ -16,3 +23,7 @@ Update a custom list. You can update the name and status of the list. Update the
 Update the value or status of the specified list item. You can't update an item on an archived list.
 
 different class name?
+
+
+TODO
+a way to get token better...

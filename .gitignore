@@ -1,0 +1,4 @@
+misc_DONOTPUSH/
+py_venv/
+ngrok/
+client_info.sjon

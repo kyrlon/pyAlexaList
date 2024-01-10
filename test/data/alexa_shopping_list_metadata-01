@@ -1,0 +1,16 @@
+{
+    "listId": "YW16bjEuYWNjb3VudC5FRk5WXihEWkk6Rk5aO1NOSlRSRz1VSFBKXl9ZLVNIT1BQSU5HX0lURU0=",
+    "name": "Alexa shopping list",
+    "state": "active",
+    "statusMap": [
+        {
+            "href": "/v2/householdlists/YW16bjEuYWNjb3VudC5FRk5WXihEWkk6Rk5aO1NOSlRSRz1VSFBKXl9ZLVNIT1BQSU5HX0lURU0=/active",
+            "status": "active"
+        },
+        {
+            "href": "/v2/householdlists/YW16bjEuYWNjb3VudC5FRk5WXihEWkk6Rk5aO1NOSlRSRz1VSFBKXl9ZLVNIT1BQSU5HX0lURU0=/completed",
+            "status": "completed"
+        }
+    ],
+    "version": 1
+}
