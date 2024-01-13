@@ -1,26 +1,177 @@
 import enum
 import json
-
-class NodeType(enum.Enum):
-    """Valid List types."""
-
-    List = "LIST"
-    """A List"""
-
-    ListItem = "LIST_ITEM"
-    """A List item"""
+import time
 
 
-class Node:
+class NodeTimestamps(Element):
+    """Represents the timestamps associated with a :class:`TopLevelNode`."""
+
+    TZ_FMT = "%Y-%m-%dT%H:%M:%S.%fZ"
+
+    def __init__(self, create_time: float | None = None) -> None:
+        """Construct a timestamps container"""
+        super().__init__()
+        if create_time is None:
+            create_time = time.time()
+
+        self._created = self.int_to_dt(create_time)
+        self._deleted = None
+        self._trashed = None
+        self._updated = self.int_to_dt(create_time)
+        self._edited = self.int_to_dt(create_time)
+
+    def _load(self, raw: dict) -> None:
+        super()._load(raw)
+        if "created" in raw:
+            self._created = self.str_to_dt(raw["created"])
+        self._deleted = self.str_to_dt(raw["deleted"]) if "deleted" in raw else None
+        self._trashed = self.str_to_dt(raw["trashed"]) if "trashed" in raw else None
+        self._updated = self.str_to_dt(raw["updated"])
+        self._edited = (
+            self.str_to_dt(raw["userEdited"]) if "userEdited" in raw else None
+        )
+
+    def save(self, clean: bool = True) -> dict:
+        """Save the timestamps container"""
+        ret = super().save(clean)
+        ret["kind"] = "notes#timestamps"
+        ret["created"] = self.dt_to_str(self._created)
+        if self._deleted is not None:
+            ret["deleted"] = self.dt_to_str(self._deleted)
+        if self._trashed is not None:
+            ret["trashed"] = self.dt_to_str(self._trashed)
+        ret["updated"] = self.dt_to_str(self._updated)
+        if self._edited is not None:
+            ret["userEdited"] = self.dt_to_str(self._edited)
+        return ret
+
+    @classmethod
+    def str_to_dt(cls, tzs: str) -> datetime.datetime:
+        """Convert a datetime string into an object.
+
+        Params:
+            tsz: Datetime string.
+
+        Returns:
+            Datetime.
+        """
+        return datetime.datetime.strptime(tzs, cls.TZ_FMT).replace(
+            tzinfo=datetime.timezone.utc
+        )
+
+    @classmethod
+    def int_to_dt(cls, tz: float) -> datetime.datetime:
+        """Convert a unix timestamp into an object.
+
+        Params:
+            ts: Unix timestamp.
+
+        Returns:
+            Datetime.
+        """
+        return datetime.datetime.fromtimestamp(tz, tz=datetime.timezone.utc)
+
+    @classmethod
+    def dt_to_str(cls, dt: datetime.datetime) -> str:
+        """Convert a datetime to a str.
+
+        Params:
+            dt: Datetime.
+
+        Returns:
+            Datetime string.
+        """
+        return dt.strftime(cls.TZ_FMT)
+
+    @classmethod
+    def int_to_str(cls, tz: int) -> str:
+        """Convert a unix timestamp to a str.
+
+        Returns:
+            Datetime string.
+        """
+        return cls.dt_to_str(cls.int_to_dt(tz))
+
+    @property
+    def created(self) -> datetime.datetime:
+        """Get the creation datetime.
+
+        Returns:
+            Datetime.
+        """
+        return self._created
+
+    @created.setter
+    def created(self, value: datetime.datetime) -> None:
+        self._created = value
+        self._dirty = True
+
+    @property
+    def deleted(self) -> datetime.datetime | None:
+        """Get the deletion datetime.
+
+        Returns:
+            Datetime.
+        """
+        return self._deleted
+
+    @deleted.setter
+    def deleted(self, value: datetime.datetime) -> None:
+        self._deleted = value
+        self._dirty = True
+
+    @property
+    def trashed(self) -> datetime.datetime | None:
+        """Get the move-to-trash datetime.
+
+        Returns:
+            Datetime.
+        """
+        return self._trashed
+
+    @trashed.setter
+    def trashed(self, value: datetime.datetime) -> None:
+        self._trashed = value
+        self._dirty = True
+
+    @property
+    def updated(self) -> datetime.datetime:
+        """Get the updated datetime.
+
+        Returns:
+            Datetime.
+        """
+        return self._updated
+
+    @updated.setter
+    def updated(self, value: datetime.datetime) -> None:
+        self._updated = value
+        self._dirty = True
+
+    @property
+    def edited(self) -> datetime.datetime:
+        """Get the user edited datetime.
+
+        Returns:
+            Datetime.
+        """
+        return self._edited
+
+    @edited.setter
+    def edited(self, value: datetime.datetime) -> None:
+        self._edited = value
+        self._dirty = True
+
+class TimeStampsUpdater:
+    ...
+
+class Node(TimeStampsUpdater):
     def __init__(self) -> None:
         create_time = time.time()
-        self.parent
-        self.id
-        self.server_id
-        self.parent_id
-        self.type
-        self._version
-        self.text
+        self.list_id = None
+        self._type = None
+        self._version =""
+        self._text = ""
         self.timestamp = "??????????????"
     
     @property
@@ -74,12 +225,12 @@ class Node:
         )
 
 class ListItem(Node):
-    ...
     def __init__(self):
         super().__init__()
         self._checked = False
-        self.list_id = None
         self._text = ""
+        self._item_id = ""
+        self._href_url = ""
     
     @property
     def checked(self) -> bool:
@@ -97,14 +248,16 @@ class ListItem(Node):
 
     
     def load(self, raw: dict) -> None:
-        #list id/ parent?????
+        #TODOlist id/ parent?????
+        #TODOdecide on href
+        self._href_url = raw["href"]
         self.list_id = self.list_id if not None else self._extract_list_id(raw["href"])
-        self.id = raw["id"]
+        self.item_id = raw["id"]
         self.createdTime = raw["createdTime"]
         self.updatedTime = raw["updatedTime"]
         self._text = raw["value"]
         self.version = raw["version"]
-        #placement in list???
+        #TODOplacement in list???
     
     def _extract_list_id(self, href):
         ...
@@ -239,6 +392,10 @@ class List:
     def archived(self, value: bool) -> None:
         self._archived = value
         self.touch(True)
+    
+    @property
+    def dirty(self) -> bool:  # noqa: D102
+        return super().dirty or self.labels.dirty or self.collaborators.dirty
 
 if __name__ == "__main__":
     obj = ListItem()
