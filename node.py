@@ -1,40 +1,35 @@
 import enum
 import json
 import time
+import datetime
 
 
-class NodeTimestamps(Element):
+class NodeTimestamps:
     """Represents the timestamps associated with a :class:`TopLevelNode`."""
 
-    TZ_FMT = "%Y-%m-%dT%H:%M:%S.%fZ"
+    TZ_FMT = "%a %b %d %H:%M:%S UTC %Y"
 
     def __init__(self, create_time: float | None = None) -> None:
         """Construct a timestamps container"""
-        super().__init__()
         if create_time is None:
             create_time = time.time()
 
         self._created = self.int_to_dt(create_time)
-        self._deleted = None
-        self._trashed = None
         self._updated = self.int_to_dt(create_time)
-        self._edited = self.int_to_dt(create_time)
+        self._edited = None
+        self._deleted = None
 
     def _load(self, raw: dict) -> None:
-        super()._load(raw)
-        if "created" in raw:
-            self._created = self.str_to_dt(raw["created"])
-        self._deleted = self.str_to_dt(raw["deleted"]) if "deleted" in raw else None
-        self._trashed = self.str_to_dt(raw["trashed"]) if "trashed" in raw else None
-        self._updated = self.str_to_dt(raw["updated"])
-        self._edited = (
-            self.str_to_dt(raw["userEdited"]) if "userEdited" in raw else None
-        )
+        self._created = self.str_to_dt(raw["createdTime"])
+        self._updated = self.str_to_dt(raw["updatedTime"])
+    
+    def load(self, raw: dict) -> None:
+    
+        self._load(raw)
 
     def save(self, clean: bool = True) -> dict:
         """Save the timestamps container"""
         ret = super().save(clean)
-        ret["kind"] = "notes#timestamps"
         ret["created"] = self.dt_to_str(self._created)
         if self._deleted is not None:
             ret["deleted"] = self.dt_to_str(self._deleted)
@@ -105,6 +100,20 @@ class NodeTimestamps(Element):
     def created(self, value: datetime.datetime) -> None:
         self._created = value
         self._dirty = True
+    
+    @property
+    def edited(self) -> datetime.datetime:
+        """Get the user edited datetime.
+
+        Returns:
+            Datetime.
+        """
+        return self._edited
+
+    @edited.setter
+    def edited(self, value: datetime.datetime) -> None:
+        self._edited = value
+        self._dirty = True
 
     @property
     def deleted(self) -> datetime.datetime | None:
@@ -121,20 +130,6 @@ class NodeTimestamps(Element):
         self._dirty = True
 
     @property
-    def trashed(self) -> datetime.datetime | None:
-        """Get the move-to-trash datetime.
-
-        Returns:
-            Datetime.
-        """
-        return self._trashed
-
-    @trashed.setter
-    def trashed(self, value: datetime.datetime) -> None:
-        self._trashed = value
-        self._dirty = True
-
-    @property
     def updated(self) -> datetime.datetime:
         """Get the updated datetime.
 
@@ -148,22 +143,45 @@ class NodeTimestamps(Element):
         self._updated = value
         self._dirty = True
 
-    @property
-    def edited(self) -> datetime.datetime:
-        """Get the user edited datetime.
-
-        Returns:
-            Datetime.
-        """
-        return self._edited
-
-    @edited.setter
-    def edited(self, value: datetime.datetime) -> None:
-        self._edited = value
-        self._dirty = True
 
 class TimeStampsUpdater:
-    ...
+    """A mixin to add methods for updating timestamps."""
+
+    def __init__(self) -> None:
+        """Instantiate mixin"""
+        self.timestamps: NodeTimestamps
+
+    def touch(self, edited: bool = False) -> None:
+        """Mark the node as dirty.
+
+        Args:
+            edited: Whether to set the edited time.
+        """
+        self._dirty = True
+        dt = datetime.datetime.now(tz=datetime.timezone.utc)
+        # self.timestamps.updated = dt
+        if edited:
+            self.timestamps.edited = dt
+
+    @property
+    def deleted(self) -> bool:
+        """Get the deleted state.
+
+        Returns:
+            Whether this item is deleted.
+        """
+        return (
+            self.timestamps.deleted is not None
+            and self.timestamps.deleted > NodeTimestamps.int_to_dt(0)
+        )
+
+    def delete(self) -> None:
+        """Mark the item as deleted."""
+        self.timestamps.deleted = datetime.datetime.now(tz=datetime.timezone.utc)
+
+    def undelete(self) -> None:
+        """Mark the item as undeleted."""
+        self.timestamps.deleted = None
 
 class Node(TimeStampsUpdater):
     def __init__(self) -> None:
@@ -172,7 +190,7 @@ class Node(TimeStampsUpdater):
         self._type = None
         self._version =""
         self._text = ""
-        self.timestamp = "??????????????"
+        self.timestamps = NodeTimestamps(create_time)
     
     @property
     def text(self) -> str:
@@ -250,17 +268,18 @@ class ListItem(Node):
     def load(self, raw: dict) -> None:
         #TODOlist id/ parent?????
         #TODOdecide on href
-        self._href_url = raw["href"]
-        self.list_id = self.list_id if not None else self._extract_list_id(raw["href"])
+        self.timestamps.load(raw)
+        self._href_url = raw["href"] + "??????"
+        self.list_id = self.list_id if self.list_id else self._extract_list_id(raw["href"])
         self.item_id = raw["id"]
-        self.createdTime = raw["createdTime"]
-        self.updatedTime = raw["updatedTime"]
+        # self.createdTime = raw["createdTime"]
+        # self.updatedTime = raw["updatedTime"]
         self._text = raw["value"]
-        self.version = raw["version"]
+        self._version = raw["version"]
         #TODOplacement in list???
     
     def _extract_list_id(self, href):
-        ...
+        return href.split("/")[3]
     
     # def save???
 
@@ -400,7 +419,7 @@ class List:
 if __name__ == "__main__":
     obj = ListItem()
 
-    with open("alexa_shopping_list_items.json", "r") as file:
+    with open("misc_DONOTPUSH/alexa_shopping_list_items.json", "r") as file:
         temp = json.load(file)
     
     for item in temp["items"]:
